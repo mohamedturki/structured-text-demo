@@ -1,0 +1,15 @@
+{
+  "name": "st-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "contentful": "^6.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js > index.html && open index.html"
+  },
+  "author": "",
+  "license": "ISC"
+}
