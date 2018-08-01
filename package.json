@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "@contentful/structured-text-html-serializer": "^2.3.0",
-    "contentful": "^6.1.2"
+    "contentful": "^6.1.2",
+    "dotenv": "^6.0.0"
   },
   "devDependencies": {},
   "scripts": {

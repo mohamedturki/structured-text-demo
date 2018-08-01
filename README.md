@@ -10,7 +10,7 @@ First install the dependencies
 $ npm install
 ```
 
-Add your `spaceId`, `accessToken` and `entryId` to the variables in the [demo](../master/index.js).
+Copy the `env.example` content into a new file `.env` and fill out the variables.
 
 Then build the page by running
 
