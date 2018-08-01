@@ -40,6 +40,7 @@ client.getEntries({include: 4, 'sys.id': entryId })
       }
     }
     entries.items.filter(entry => entry.sys.id === entryId).forEach(entry => {
+      // Here `structuredContent` is the name of the structured field in my content model
       console.log(documentToHtmlString(entry.fields.structuredContent, renderOptions))
     })
   })
