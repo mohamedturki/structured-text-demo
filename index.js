@@ -17,23 +17,29 @@ const client = contentful.createClient({
   accessToken
 })
 
+// Use the collection endpoint but fetch only the
+// entry(ies) that you want to render.
 client.getEntries({include: 4, 'sys.id': entryId })
   .then((entries) => {
-    entries.items.filter(entry => entry.sys.id === entryId).forEach(entry => {
-      const renderOptions = {
-        renderNode: {
-          [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-            const entryId = node.data.target.sys.id;
-            let entry = {};
-            if (entries.includes) {
-              entry = entries.includes.Entry.find(e => e.sys.id === entryId);
-            } else {
-              entry = entries.items.find(e => e.sys.id === entryId);
-            }
-            return `<code>${JSON.stringify(entry)}</code>`;
-          } 
+    const renderOptions = {
+      renderNode: {
+        [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+          const entryId = node.data.target.sys.id;
+          let entry = {};
+          // look for the resolved entries either in the `includes` field
+          // (if it was part of the `.items`) 
+          if (entries.includes) {
+            entry = entries.includes.Entry.find(e => e.sys.id === entryId);
+
+          // or in the `.items` if it was returned as part of the queried entries.
+          } else {
+            entry = entries.items.find(e => e.sys.id === entryId);
+          }
+          return `<code>${JSON.stringify(entry)}</code>`;
         }
       }
+    }
+    entries.items.filter(entry => entry.sys.id === entryId).forEach(entry => {
       console.log(documentToHtmlString(entry.fields.structuredContent, renderOptions))
     })
   })
