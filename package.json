@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@contentful/structured-text-html-serializer": "^2.3.0",
     "contentful": "^6.1.2"
   },
   "devDependencies": {},
